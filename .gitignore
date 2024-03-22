@@ -41,3 +41,4 @@ build/
 src/main/frontend/generated/
 node_modules/
 vite.generated.ts
+src/main/bundles/
