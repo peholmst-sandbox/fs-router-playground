@@ -1,0 +1,64 @@
+
+.view {
+    --sidebar-width: 25rem;
+    --sidebar-transition: 200ms;
+
+
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-width);
+    overflow: hidden;
+}
+
+.view .content {
+    height: 100%;
+}
+
+.view .sidebar {
+    box-shadow: var(--lumo-box-shadow-s);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: var(--sidebar-width);
+}
+
+.view .sidebar.hidden {
+    transition: visibility var(--sidebar-transition);
+    visibility: hidden;
+}
+
+.view:has(.sidebar.hidden) {
+    grid-template-columns: 1fr 0;
+    transition: var(--sidebar-transition);
+}
+
+.view .sidebar .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--lumo-space-l);
+    height: var(--lumo-size-xl);
+}
+
+.view .sidebar .header H2 {
+    font-size: var(--lumo-font-size-xl);
+    line-height: var(--lumo-line-height-s);
+}
+
+.view .sidebar .header .close-button {
+    color: var(--lumo-secondary-text-color);
+}
+
+.view .sidebar .content {
+    flex-grow: 1;
+    padding: 0 var(--lumo-space-l) var(--lumo-space-l) var(--lumo-space-l);
+}
+
+.view .sidebar .footer {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--lumo-space-s);
+    padding: var(--lumo-space-s) var(--lumo-space-m);
+    background: var(--lumo-contrast-5pct);
+}
