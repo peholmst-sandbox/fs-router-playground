@@ -30,17 +30,17 @@ export default function Sidebar(props: SidebarProps) {
         }
     }
 
-    return <section className={`sidebar ${hidden.value && 'hidden'}`} aria-labelledby="sidebar-title">
-        <div className="header">
-            <h2 id="sidebar-title">{props.title}</h2>
+    return <section className={`view-sidebar ${hidden.value ? 'hidden' : ''}`} aria-labelledby="view-sidebar-title">
+        <header>
+            <h2 id="view-sidebar-title">{props.title}</h2>
             <Button theme="icon tertiary" className="close-button" onClick={handleClose} aria-label="Close sidebar">
                 <Icon icon="lumo:cross"/>
                 <Tooltip slot="tooltip" text="Close sidebar"/>
             </Button>
-        </div>
-        <div className="content">
+        </header>
+        <div className="view-sidebar-content">
             {props.children}
         </div>
-        {props.footer && <div className="footer">{props.footer}</div>}
+        {props.footer && <footer>{props.footer}</footer>}
     </section>
 }

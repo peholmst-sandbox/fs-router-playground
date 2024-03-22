@@ -1,0 +1,13 @@
+.layout-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.layout-header h1 {
+    font-size: var(--lumo-font-size-l);
+}
+
+.layout-sidenav-scroller {
+    padding: var(--lumo-space-s);
+}
