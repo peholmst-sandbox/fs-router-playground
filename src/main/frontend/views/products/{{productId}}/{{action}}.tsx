@@ -6,17 +6,19 @@ import {ProductService} from "Frontend/generated/endpoints";
 import {Link, To, useNavigate, useParams} from "react-router-dom";
 import View from "Frontend/components/View";
 import ProductSidebar from "Frontend/views/products/{{productId}}/_ProductSidebar";
+import AddProductDialog from "Frontend/views/products/{{productId}}/_AddProductDialog";
 
 export default function ProductsView() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const {productId, action} = useParams()
 
     const products = useSignal<ProductListItem[] | undefined>(undefined)
-    const selectedProduct = useSignal<ProductListItem | undefined>(undefined);
+    const selectedProduct = useSignal<ProductListItem | undefined>(undefined)
+    const addProductDialogOpened = useSignal<boolean>(false)
 
     useEffect(() => {
         refreshGrid()
-    }, []);
+    }, [])
 
     useEffect(() => {
         if (products.value && productId) {
@@ -61,6 +63,10 @@ export default function ProductsView() {
         showSelectedProduct()
     }
 
+    function openAddProductDialog() {
+        addProductDialogOpened.value = true
+    }
+
     function createProductDetailsLocation(product: ProductListItem, editMode: boolean = false): To {
         if (editMode) {
             return `/products/${product.productId}/edit`
@@ -71,7 +77,7 @@ export default function ProductsView() {
 
     return (
         <View title="Product Catalog"
-              actions={<Button theme="primary">Add Product</Button>}
+              actions={<Button theme="primary" onClick={openAddProductDialog}>Add Product</Button>}
               sidebar={<ProductSidebar product={selectedProduct.value}
                                        onClose={clearSelection}
                                        onEdit={editSelectedProduct}
@@ -101,6 +107,9 @@ export default function ProductsView() {
                 <GridColumn path="retailPrice.currency.code" header={"Currency"}/>
                 <GridColumn path="vatRate.name" header={"VAT Rate"}/>
             </Grid>
+            <AddProductDialog opened={addProductDialogOpened.value}
+                              onClose={() => addProductDialogOpened.value = false}
+                              onAdd={refreshGrid}/>
         </View>
     )
 }

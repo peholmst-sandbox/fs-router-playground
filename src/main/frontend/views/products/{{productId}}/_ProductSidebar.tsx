@@ -25,7 +25,7 @@ export default function ProductSidebar(props: ProductSidebarProps) {
     const form = useForm(ProductFormDataModel, {
         onSubmit: async (productData) => {
             if (props.product) {
-                await ProductService.save({productId: props.product.productId, data: productData})
+                await ProductService.update({productId: props.product.productId, data: productData})
                 if (props.onSave) {
                     props.onSave()
                 }
