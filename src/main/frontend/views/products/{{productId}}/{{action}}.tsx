@@ -11,7 +11,7 @@ export default function ProductsView() {
     const navigate = useNavigate();
     const {productId, action} = useParams()
 
-    const products = useSignal<ProductListItem[]>([])
+    const products = useSignal<ProductListItem[] | undefined>(undefined)
     const selectedProduct = useSignal<ProductListItem | undefined>(undefined);
 
     useEffect(() => {
@@ -40,6 +40,7 @@ export default function ProductsView() {
     }
 
     function clearSelection() {
+        console.log("Clearing selection")
         navigate("/products")
     }
 
