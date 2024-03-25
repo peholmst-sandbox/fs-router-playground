@@ -68,7 +68,7 @@ export default function CustomerSidebar(props: CustomerSidebarProps) {
         {props.editMode && <Button theme="tertiary" onClick={handleDiscard}><Icon icon="lumo:undo"/> Discard</Button>}
     </>
 
-    return <Sidebar title={props.editMode ? "Edit " + props.customer?.name : props.customer?.name}
+    return <Sidebar title={props.editMode ? "Edit " + form.value.name : form.value.name}
                     onClose={props.onClose} hidden={!props.customer} footer={footer}>
         {customerFormData.value && <CustomerForm form={form} editMode={props.editMode}/>}
     </Sidebar>

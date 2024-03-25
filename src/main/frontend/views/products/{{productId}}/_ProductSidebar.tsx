@@ -68,8 +68,7 @@ export default function ProductSidebar(props: ProductSidebarProps) {
         {props.editMode && <Button theme="primary" onClick={handleSave} disabled={form.invalid || form.submitting}><Icon icon="lumo:checkmark" slot="prefix"/> Save</Button>}
         {props.editMode && <Button theme="tertiary" onClick={handleDiscard}><Icon icon="lumo:undo"/> Discard</Button>}
     </>
-
-    return <Sidebar title={props.editMode ? "Edit " + props.product?.name : props.product?.name}
+    return <Sidebar title={props.editMode ? "Edit " + form.value.name : form.value.name}
                     onClose={props.onClose} hidden={!props.product} footer={footer}>
         {productFormData.value && <ProductForm form={form} editMode={props.editMode}/>}
     </Sidebar>
