@@ -47,6 +47,7 @@
     flex-direction: column;
     position: relative;
     width: var(--sidebar-width);
+    height: 100%;
 }
 
 .view-sidebar.hidden {
@@ -87,4 +88,7 @@
 .view-sidebar-content {
     flex-grow: 1;
     padding: 0 var(--lumo-space-m) var(--lumo-space-l) var(--lumo-space-m);
+    height: var(--lumo-size-xl);
+    overflow-y: auto;
+    box-sizing: border-box;
 }
