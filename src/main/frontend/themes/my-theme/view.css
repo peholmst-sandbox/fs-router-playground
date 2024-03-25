@@ -7,12 +7,15 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr var(--sidebar-width);
-    overflow: hidden;
+    overflow: clip;
+    border-radius: var(--lumo-border-radius-l);
+    background: var(--lumo-base-color);
+    border: 1px solid var(--lumo-shade-30pct);
+    transition: var(--sidebar-transition);
 }
 
 .view:has(.view-sidebar.hidden) {
     grid-template-columns: 1fr 0;
-    transition: var(--sidebar-transition);
 }
 
 .view-content-container {
@@ -23,8 +26,9 @@
 }
 
 .view-content-container header {
-    border-bottom: var(--lumo-shade-10pct) solid 1px;
-    padding: var(--lumo-space-xs) var(--lumo-space-m);
+    background: linear-gradient(135deg, var(--lumo-shade-5pct), var(--lumo-base-color));
+    border-bottom: 1px solid var(--lumo-shade-30pct);
+    padding: var(--lumo-space-xs) var(--lumo-space-m) var(--lumo-space-xs) 0 ;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,9 +36,18 @@
     height: var(--lumo-size-xl);
 }
 
-.view-content-container header h2 {
+.view-content-container header .view-content-title-container {
+    display: flex;
+    align-items: center;
+}
+
+.view-content-container header .view-content-title-container h2 {
     font-size: var(--lumo-font-size-l);
     line-height: var(--lumo-line-height-s);
+}
+
+.view-content-container header .view-content-title-container vaadin-drawer-toggle {
+    color: var(--lumo-secondary-text-color);
 }
 
 .view-content {
@@ -48,10 +61,10 @@
     position: relative;
     width: var(--sidebar-width);
     height: 100%;
+    transition: visibility var(--sidebar-transition);
 }
 
 .view-sidebar.hidden {
-    transition: visibility var(--sidebar-transition);
     visibility: hidden;
 }
 
@@ -61,7 +74,7 @@
     justify-content: space-between;
     padding: var(--lumo-space-xs) var(--lumo-space-m);
     height: var(--lumo-size-xl);
-    border-bottom: var(--lumo-shade-10pct) solid 1px;
+    border-bottom: var(--lumo-shade-30pct) solid 1px;
 }
 
 .view-sidebar header H2 {
@@ -83,6 +96,7 @@
     column-gap: var(--lumo-space-s);
     padding: var(--lumo-space-s) var(--lumo-space-m);
     background: var(--lumo-contrast-5pct);
+    border-top: 1px solid var(--lumo-contrast-10pct);
 }
 
 .view-sidebar-content {
